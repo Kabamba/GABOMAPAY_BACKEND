@@ -1,0 +1,2410 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de base en laravel",
+        "description": "GabomaPay",
+        "version": "0.1"
+    },
+    "servers": [
+        {
+            "url": "http://gabomapay.com/api"
+        }
+    ],
+    "paths": {
+        "/admin/admins/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__ADMINISTRATEUR"
+                ],
+                "summary": "Liste des administrateurs",
+                "operationId": "70d159651ab1842498461cf31a7343ba",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "scalar": "bearer"
+                    }
+                ]
+            }
+        },
+        "/admin/admins/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__ADMINISTRATEUR"
+                ],
+                "summary": "Ajouter un administrateur",
+                "operationId": "82cb61d613d89b30f79428737c43ee6c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Mulamba"
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": "Enock"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    },
+                                    "sexe": {
+                                        "type": "string",
+                                        "example": "M"
+                                    },
+                                    "country": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "admin_level": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/admins/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__ADMINISTRATEUR"
+                ],
+                "summary": "Renvoie les informations d'un administrateur par son ID",
+                "operationId": "31681fa15426ac49b7e17ffd74f4351f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/admins/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__ADMINISTRATEUR"
+                ],
+                "summary": "Editer les informations d'un administrateur",
+                "operationId": "b8366dfcf03e7f01de3503e2f111d91d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Mulamba"
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": "Enock"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    },
+                                    "admin_level": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/admins/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__ADMINISTRATEUR"
+                ],
+                "summary": "Active ou désactive l'état d'un administrateur par son ID",
+                "operationId": "6402cc5b0e938b02ecdcbea9cfa05f43",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Authentifie l'utilisateur avant de se connecter",
+                "description": "",
+                "operationId": "2dd578ff7aba2721293dac66833b27d1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Deconnexion de l'utilisateur",
+                "description": "",
+                "operationId": "68a6108af04af5e3bc1ea68a6c6f1299",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "token": {
+                                        "schema": "Bearer",
+                                        "type": "string",
+                                        "example": "89er4186gjazuihhiZIOJreioiouEIOJIOZERF814879AE8FEA"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Inscription de l'utilisateur",
+                "description": "",
+                "operationId": "0903f2e0df1a8857bee538fc055417f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Mulamba"
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": "Enock"
+                                    },
+                                    "country": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+243852277378"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/forgot": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Demande de rénitialisation de mot de passe par mail",
+                "description": "",
+                "operationId": "03aca08208571c2a43bcdeebb40304ae",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/reset": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Renitialisation du mot de passe",
+                "description": "",
+                "operationId": "8ae8881c540d1f799293343fde43c530",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "token": {
+                                        "type": "string",
+                                        "example": "ufghzruqgioqzruogrjcuuUIBYRCUR?61154600"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/profile": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Modification des informations du profile de l'utilisateur",
+                "description": "",
+                "operationId": "c9645f8c93e992e4df8b013e542bd367",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 18
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Kabamba"
+                                    },
+                                    "prenom": {
+                                        "type": "string",
+                                        "example": "Enock"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "bgi@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+243852277378"
+                                    },
+                                    "sexe": {
+                                        "type": "string",
+                                        "example": "M"
+                                    },
+                                    "adresse": {
+                                        "type": "string",
+                                        "example": "N°5 Bukasa Limete 1iere Rue"
+                                    },
+                                    "profile": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/identite": {
+            "post": {
+                "tags": [
+                    "AUHTENTIFICATION"
+                ],
+                "summary": "Chargement de la piéce d'identité de l'utilisateur",
+                "description": "",
+                "operationId": "c67945b64410b2980d9d6b9c6cf9e969",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 18
+                                    },
+                                    "identite": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/pays/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PAYS"
+                ],
+                "summary": "Liste des pays",
+                "operationId": "b8a6b9f82de09561b47ddc3c2254987d",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/pays/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__PAYS"
+                ],
+                "summary": "Ajouter un pays",
+                "operationId": "dc0b832cf98916bffcadeffc97e9690a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "Gabon"
+                                    },
+                                    "devise": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/pays/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PAYS"
+                ],
+                "summary": "Renvoie les informations d'un pays par son ID",
+                "operationId": "12d3ee6690296bb2821ed1711bd1be58",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/pays/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__PAYS"
+                ],
+                "summary": "Editer les informations d'un pays",
+                "operationId": "befcfcf155f54d46da7b6a2c621dba61",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "Gabon"
+                                    },
+                                    "devise": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/pays/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PAYS"
+                ],
+                "summary": "Active ou désactive l'état d'un pays par son ID",
+                "operationId": "d046673e18fd7bfbbc23b7516b7efde2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/devises/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__DEVISE"
+                ],
+                "summary": "Liste des devises",
+                "operationId": "38f801facfebfc3d4997dbb0471651d8",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/devises/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__DEVISE"
+                ],
+                "summary": "Ajouter une devise",
+                "operationId": "10ac466f39d6aabee29c1aa3ee2dea5f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "dollars"
+                                    },
+                                    "symbole": {
+                                        "type": "string",
+                                        "example": "$"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/devises/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__DEVISE"
+                ],
+                "summary": "Renvoie les informations d'une devise par son ID",
+                "operationId": "a15a6c00321f1d7a3fc77e04ea780d5d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/devises/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__DEVISE"
+                ],
+                "summary": "Editer les informations d'une devise",
+                "operationId": "1e36bb18f757d010a7cf028ab07e0201",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "dollars"
+                                    },
+                                    "symbole": {
+                                        "type": "string",
+                                        "example": "$"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/devises/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__DEVISE"
+                ],
+                "summary": "Active ou désactive l'état d'une devise par son ID",
+                "operationId": "7815b07620c572796bd41bbb8a54e62c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/operators/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__OPERATEURS"
+                ],
+                "summary": "Liste des opérateurs",
+                "operationId": "62a383f7613c6ce346853faa9d37ce01",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/operators/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__OPERATEURS"
+                ],
+                "summary": "Ajouter un opérateur",
+                "operationId": "0e8df8a3c7022a67e3a716c4264c3330",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "Orange money"
+                                    },
+                                    "agent_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "min": {
+                                        "type": "float",
+                                        "example": 10
+                                    },
+                                    "max": {
+                                        "type": "float",
+                                        "example": 1000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/operators/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__OPERATEURS"
+                ],
+                "summary": "Renvoie les informations d'un opérateur par son ID",
+                "operationId": "dcd04db53342df7485ca8e2ac3583cf6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/operators/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__OPERATEURS"
+                ],
+                "summary": "Editer les informations d'un opérateur",
+                "operationId": "b9d0576fdc50c1c98af45a862a64c6ac",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "libelle": {
+                                        "type": "string",
+                                        "example": "M-pesa"
+                                    },
+                                    "agent_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "example": 1000
+                                    },
+                                    "min": {
+                                        "type": "integer",
+                                        "example": 10
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/operators/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__OPERATEURS"
+                ],
+                "summary": "Active ou désactive l'état d'une devise par son ID",
+                "operationId": "a35ba95a9c5feb12b337336ebca82f37",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PUBLICATION"
+                ],
+                "summary": "Liste des publications",
+                "operationId": "e93c863caa634100590325b2bfff2803",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__PUBLICATION"
+                ],
+                "summary": "Ajouter une publication",
+                "operationId": "65cf97fc6835798bd59ee2ceb01c7b80",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Un exemple de description"
+                                    },
+                                    "image": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PUBLICATION"
+                ],
+                "summary": "Renvoie les informations d'une publications par son ID",
+                "operationId": "b71295fbfc89400f547c1295507ae6bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__PUBLICATION"
+                ],
+                "summary": "Modifie une publication",
+                "operationId": "7c3adf142329901e99a0c1e59806a9da",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Un exemple de description"
+                                    },
+                                    "image": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/posts/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__PUBLICATION"
+                ],
+                "summary": "Active ou désactive l'état d'une publication par son ID",
+                "operationId": "ec15a8a1c9758db9c390fd4c4652fee0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/stats/usersnumber": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__STATISTIQUE"
+                ],
+                "summary": "Nombre des utilisateurs",
+                "operationId": "bdf195e8fc5a58a8aec87570f8978bd1",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/stats/transacnumber": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__STATISTIQUE"
+                ],
+                "summary": "Nombre des transactions",
+                "operationId": "8f938bd29cf2e010b1d7fa063382bee5",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/stats/depotnumber": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__STATISTIQUE"
+                ],
+                "summary": "Nombre des depots",
+                "operationId": "effb641ea21a09fc469f00bf3f9c5443",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/stats/envoienumber": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__STATISTIQUE"
+                ],
+                "summary": "Nombre des envoies",
+                "operationId": "b5d7109bf110a8563ed943f37e627744",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/taux/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TAUX"
+                ],
+                "summary": "Liste des taux",
+                "operationId": "41d49e8fb0f46a87f56bb4c99d6711b4",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/taux/getaux/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TAUX"
+                ],
+                "summary": "Récupére un taux d'échange",
+                "operationId": "06e8f9fd01cfe5203562f645ad75cfee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/taux/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__TAUX"
+                ],
+                "summary": "Modifie le taux d'échange",
+                "operationId": "12a907a72689599e0906834599b3cd47",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "taux_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "taux_amount": {
+                                        "type": "float",
+                                        "example": 572.5
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Liste des transactions",
+                "operationId": "fc93f65b22ce07694fadb7ef5ca90517",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/listinvalide": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Liste des transactions invalides",
+                "operationId": "fbc2a5dafece79b1faa00d6e30627ffb",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/listvalide": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Liste des transactions valides",
+                "operationId": "b333b0cb6231def9c615a644304fa8fa",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/currenthirty": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Liste des transactions en cours ayant eu lieu moins de 30 minutes",
+                "operationId": "cf681b784599dcfb34aceaf08478bbc3",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/listoday": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Liste des transactions du jour",
+                "operationId": "0cea4e492e3a280f1b04c2214c2fff69",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/limitation/{limit}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Donne un nombre limité des transactions",
+                "operationId": "47d0ca4c6698bc7933ec397b87c4b3bd",
+                "parameters": [
+                    {
+                        "name": "limit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Affiche les informations d'une transaction par son ID",
+                "operationId": "dbff651e9a1f217f2e23c026ff635be8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/transacuser/{transac}/{user}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Affiche les informations d'une transaction pour un utilisateur précis",
+                "operationId": "4771965535cfad859caeb81076259c1e",
+                "parameters": [
+                    {
+                        "name": "transac",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    },
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/transac_user/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Affiche les transactions d'un utilisateur",
+                "operationId": "c4acdf6c2293662c95c8f0c2a030d97f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/valider/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Valide une transaction par son ID",
+                "operationId": "4610d74c78c4cda61a40146844a47362",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/invalider": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Invalider une transaction",
+                "operationId": "546bcc2334a720c407a188be4592670e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "raison": {
+                                        "type": "string",
+                                        "example": "RAS"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/transactions/searchperdate": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__TRANSACTION"
+                ],
+                "summary": "Recherche les transactions entre deux dates",
+                "operationId": "4bf66571b67abcf21dbd765c56715b18",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "start": {
+                                        "type": "date"
+                                    },
+                                    "end": {
+                                        "type": "date"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simuler": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Permet de simuler une transaction",
+                "operationId": "37a2a3409974074c98c7d5022bb0858a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 5000
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/recharge/gab": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte mobile money ou une carte bancaire du gabon vers un compte GABOMAPAY ",
+                "operationId": "e722621ee2d291cdf157352cbf6a369d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Daniel Kiala"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "danielkiala@gmail.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/success/gab": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Valide une transactrion du gabon venant de l'API Ebilling",
+                "operationId": "97710b3b62e3fddef7c175cf5f5c183a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "float",
+                                        "example": 1500000
+                                    },
+                                    "paymentsystem": {
+                                        "type": "string",
+                                        "example": "airtel money"
+                                    },
+                                    "billing_id": {
+                                        "type": "string",
+                                        "example": "87288728700AGHD"
+                                    },
+                                    "reference": {
+                                        "type": "string",
+                                        "example": "11545484848GHDGYHDI"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/depot_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule un dépôt d'un compte GABOMAPAY RDC",
+                "operationId": "ec157c9018e317b03f45fcd28e48d3ab",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "reference": {
+                                        "type": "string",
+                                        "example": "580600544ANBGHDH"
+                                    },
+                                    "capture": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/recharge/rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Permet de fraire un depôt vers un portefeuille gabomaPay",
+                "operationId": "1b0d7d66bcc8b47de48efef43521d50e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "reference": {
+                                        "type": "string",
+                                        "example": "580600544ANBGHDH"
+                                    },
+                                    "capture": {
+                                        "type": "file"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/retrait_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le retrait d'un compte GABOMAPAY RDC vers un numéro mobile money",
+                "operationId": "f635ff9361244fe5da9d96556a0c134c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852278378"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/retrait/rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Retrait de l'argent d'un compte GABOMAPAY RDC vers un numéro mobile money",
+                "operationId": "60578a6377ac931b7e7da00998b40ef5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 5000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 8
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_compte_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMAPAY RDC vers un autre compte GABOMAPAY RDC",
+                "operationId": "9705b033b15f12f3932cc7532f1e4fb9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_compte_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte GABOMAPAY RDC vers un autre compte GABOMAPAY RDC",
+                "operationId": "5dd43213fb6933fe86f9de282a50c8f6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_noncompte_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMAPAY RDC vers un numéro mobile money",
+                "operationId": "57c7de8540b92e6e202e4168b66afeb2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 5000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 8
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_noncompte_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transgfert l'argent d'un compte GABOMAPAY RDC vers un numéro mobile money",
+                "operationId": "0b6b9de2aebc9e15ce2a8efeab0ce50a",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 5000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 8
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_compte_rdc_gabon": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMPAY RDC vers un compte GABOMPAY GABON",
+                "operationId": "da95af1c559c510052d757e80107cb88",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "0123456782"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_rdc_gabon": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte GABOMPAY RDC vers un compte GABOMPAY GABON",
+                "operationId": "f2a8bb3d744ee424d55b4350b3d83dba",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "0123456782"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_compte_gabon": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMAPAY GABON vers un autre compte GABOMAPAY GABON",
+                "operationId": "29d781bd4da7d304ce888109508fa32b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_compte_gabon": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte GABOMAPAY GABON vers un autre compte GABOMAPAY GABON",
+                "operationId": "9837a65049e9dec603f613531c425bd9",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "0123456783"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_compte_gabon_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMPAY RDC vers un compte GABOMPAY GABON",
+                "operationId": "20b228d327f46f2f58715c112c3f6b4e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "0123456782"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_compte_gabon_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte GABOMPAY GABON vers un compte GABOMPAY RDC à partir de l'adresse mail du compte recepteur",
+                "operationId": "e55e41294d078ada5213a7b72519563b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/simulation/envoie_noncompte_gabon_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Simule le transfert d'argent d'un compte GABOMPAY RDC vers un compte GABOMPAY GABON",
+                "operationId": "d2e53a792ede9b9bd1f571424f24ea91",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 1500000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "0123456782"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/paiement/envoie_noncompte_gabon_rdc": {
+            "post": {
+                "tags": [
+                    "CLIENT__PAIEMENT"
+                ],
+                "summary": "Transfert l'argent d'un compte GABOMAPAY GABON vers un numéro mobile RDC",
+                "operationId": "c11cd7f21fb0946e615e0cf4259341fa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 5000
+                                    },
+                                    "sender_id": {
+                                        "type": "integer",
+                                        "example": 8
+                                    },
+                                    "recever_number": {
+                                        "type": "string",
+                                        "example": "+243852277379"
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/users/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__UTILISATEUR"
+                ],
+                "summary": "Liste des utilisateurs",
+                "operationId": "f502bc4c9e21f43d5022b21683886916",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/users/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__UTILISATEUR"
+                ],
+                "summary": "Renvoie les informations d'un utilisateur par son ID",
+                "operationId": "085e470d12a568ddd14f5a29270456ff",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/users/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__UTILISATEUR"
+                ],
+                "summary": "Active ou désactive l'état d'un utilisateur par son ID",
+                "operationId": "f43481b9e665f9e8f752b7c8b8dd8c06",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/tarifs/list": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TARIFS"
+                ],
+                "summary": "Liste des tarifs par opérateur",
+                "operationId": "0ce3b9087764845c5b2635a84f318e9f",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/tarifs/store": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__TARIFS"
+                ],
+                "summary": "Ajouter un tarif",
+                "operationId": "7fb292fc9f30a09e27618798373162d0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "frais_ope": {
+                                        "type": "float",
+                                        "example": 2
+                                    },
+                                    "frais_perso": {
+                                        "type": "float",
+                                        "example": 1
+                                    },
+                                    "operator_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/tarifs/show/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TARIFS"
+                ],
+                "summary": "Renvoie les informations d'un tarif par son ID",
+                "operationId": "583237a338b268aae313e898bea9c25c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/tarifs/update": {
+            "post": {
+                "tags": [
+                    "ADMINISTRATION__TARIFS"
+                ],
+                "summary": "Editer les informations d'un tarif",
+                "operationId": "677f044b2e32335cc20e00f6a90f548e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "frais_ope": {
+                                        "type": "float",
+                                        "example": 2
+                                    },
+                                    "frais_perso": {
+                                        "type": "float",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/admin/tarifs/activate/{id}": {
+            "get": {
+                "tags": [
+                    "ADMINISTRATION__TARIFS"
+                ],
+                "summary": "Active ou désactive l'état d'une tarif par son ID",
+                "operationId": "6b72537927804fef5aef989a0dac47a6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 18
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "bearerFormat": "JWT"
+            },
+            "0": []
+        }
+    }
+}
